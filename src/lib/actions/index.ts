@@ -9,7 +9,7 @@ import { getAveragePrice, getHighestPrice, getLowestPrice } from "@/lib/utils"
 import { User } from "@/types"
 import { generateEmailBody, sendEmail } from "@/lib/nodemailer"
 
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const delay = (ms: any) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export async function scrapeAndStoreProduct(productUrl: string){
 
@@ -20,7 +20,7 @@ export async function scrapeAndStoreProduct(productUrl: string){
 
         await connectToDB()
 
-        await delay(10000);
+        await delay(5000);
 
         const scrapedProduct = await scrapeAmazonProduct(productUrl)
         
