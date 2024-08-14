@@ -20,7 +20,7 @@ export async function scrapeAndStoreProduct(productUrl: string){
 
         await connectToDB()
 
-        await delay(10000);
+        await delay(5000);
 
         const scrapedProduct = await scrapeAmazonProduct(productUrl)
         
