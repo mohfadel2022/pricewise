@@ -1,8 +1,12 @@
-import { PriceHistoryItem, Product } from "@/types";
-
-
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+
+
+import { PriceHistoryItem, Product } from "@/types";
 
 const Notification = {
   WELCOME: 'WELCOME',
@@ -14,9 +18,6 @@ const Notification = {
 const THRESHOLD_PERCENTAGE = 40;
 
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
 
 // Extracts and returns the price from a list of possible elements.
 export function extractPrice(...elements: any){
@@ -39,7 +40,6 @@ export function extractPrice(...elements: any){
   }
   return ""
 }
-
 
 // Extracts and returns the currency symbol from an element.
 export function extractCurrency(element: any) {
@@ -71,7 +71,6 @@ export function extractDescription($: any) {
   // If no matching elements were found, return an empty string
   return "";
 }
-
 
 export function getHighestPrice(priceList: PriceHistoryItem[]) {
   let highestPrice = priceList[0];
