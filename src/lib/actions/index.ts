@@ -9,6 +9,7 @@ import { getAveragePrice, getHighestPrice, getLowestPrice } from "@/lib/utils"
 import { User } from "@/types"
 import { generateEmailBody, sendEmail } from "@/lib/nodemailer"
 
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export async function scrapeAndStoreProduct(productUrl: string){
 
@@ -18,12 +19,15 @@ export async function scrapeAndStoreProduct(productUrl: string){
     try {
 
         await connectToDB()
+
+        await delay(10000);
+
         const scrapedProduct = await scrapeAmazonProduct(productUrl)
         
-
         if(!scrapedProduct) return
 
         let product = scrapedProduct
+
         const existingProduct = await Product.findOne({url: scrapedProduct.url})
 
         if(existingProduct){
@@ -53,8 +57,7 @@ export async function scrapeAndStoreProduct(productUrl: string){
 
     } catch (error: any) {
       console.log(error);
-
-        throw new Error("Failed to create/update product")
+        // throw new Error("Failed to create/update product")
     }
 }
 
