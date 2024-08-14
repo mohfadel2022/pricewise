@@ -1,3 +1,4 @@
+"use server"
 import axios from "axios"
 import * as cheerio from 'cheerio'
 import { extractCurrency, extractDescription, extractPrice } from "@/lib/utils"
