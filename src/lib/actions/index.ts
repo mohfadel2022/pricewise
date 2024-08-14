@@ -57,7 +57,7 @@ export async function scrapeAndStoreProduct(productUrl: string){
 
     } catch (error: any) {
       console.log(error);
-        // throw new Error("Failed to create/update product")
+        throw new Error("Failed to create/update product")
     }
 }
 
